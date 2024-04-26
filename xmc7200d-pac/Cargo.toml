@@ -1,0 +1,28 @@
+[package]
+authors = ["wheelin"]
+edition = "2021"
+readme = "README.md"
+name = "xmc7200d-pac"
+version = "0.1.0"
+
+[dependencies]
+cortex-m = "0.7.7"
+cortex-m-rt = { version = "0.7.4", optional = true}
+critical-section = { version = "1.1.2", optional = true }
+vcell = "0.1.3"
+
+[features]
+default = ["critical-section", "rt"]
+rt = ["cortex-m-rt/device"]
+
+[package.metadata.docs.rs]
+features = ['default']
+
+[lib]
+name = "xmc7200d_pac"
+path = "src/lib.rs"
+
+[build-dependencies]
+svd2rust = "0.29.0"
+form = { version = "0.11.1" }
+regex = "1.10.0"
